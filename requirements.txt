@@ -1,0 +1,25 @@
+# Core API, Async Networking & Load Balancing Labs (Levels 1 & 3)
+fastapi
+uvicorn
+httpx
+aiohttp
+websockets
+pydantic
+
+# Storage Engines, Relational & OLAP Databases (Level 2)
+sqlalchemy
+aiosqlite
+duckdb
+
+# In-Memory Caching, Rate Limiting & Distributed Locking (Level 3)
+redis
+fakeredis
+
+# Hardware Telemetry, Terminal Visualizations & Dashboards (Levels 1-5)
+psutil
+rich
+
+# Security, Auth (JWT/mTLS/Crypto) & Vector Math / AI System Design (Levels 5 & 7)
+pyjwt
+cryptography
+numpy

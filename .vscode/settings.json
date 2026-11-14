@@ -1,0 +1,27 @@
+{
+  // --- File & Search Exclusions (Prevents AI from scanning heavy/irrelevant folders) ---
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/__pycache__": true,
+    "**/.venv": true,
+    "**/dist": true,
+    "**/build": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.venv": true,
+    "**/*.log": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true
+  },
+
+  // --- Markdown & Diagramming Optimizations for System Design ---
+  "markdown.preview.breaks": true,
+  "editor.wordWrap": "on",
+  "files.autoSave": "afterDelay"
+}
