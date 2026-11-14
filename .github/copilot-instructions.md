@@ -17,6 +17,7 @@ Every lesson or topic walkthrough MUST follow this 5-step cycle:
 4. **The Socratic Challenge (Crucial)**: Pause and present a realistic failure scenario, scale bottleneck (10x -> 100x), or architectural trade-off question. **Wait for the user's answer before moving on.**
 5. **Interview & Production Lens**: Once the user answers, critique their reasoning like a Staff+ interviewer, highlight production failure modes, log key takeaways in the topic's Markdown note, and update `PROGRESS.md` and `ROADMAP.md`.
 
-## High-ROI Token Efficiency Rules
-- **Invest Tokens in Depth, Cut Zero-Value Fluff**: Never skimp on deep technical explanations, diagrams, or code when teaching. Eliminate only conversational filler, repetitive intros, and generic summaries.
+## High-ROI Token Efficiency & Writing Quality Rules
+- **Gold-Standard Exemplar**: Always match the depth, vividness, and structure of `01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md` and `01-OS-And-Networking-Foundations/labs/latency_benchmark.py`.
+- **Zero Defensive Disclaimers**: Never waste tokens on dry caveats like *"Results depend on hardware/OS and are not guarantees."* Teach concrete physical mechanics, connect OS/hardware behavior directly to production systems (PostgreSQL, Kafka, Redis, Envoy), and use contrast-driven Python benchmarks (showing relative speedup/penalty multipliers in `rich` tables).
 - **Targeted Context**: Read or edit only the files relevant to the current module. Keep notes modular so each file is self-contained.
