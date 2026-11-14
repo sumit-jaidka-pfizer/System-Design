@@ -23,5 +23,10 @@
   // --- Markdown & Diagramming Optimizations for System Design ---
   "markdown.preview.breaks": true,
   "editor.wordWrap": "on",
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+
+  // --- Python Virtual Environment & Prompt Files Auto-Configuration ---
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "chat.promptFiles": true
 }
