@@ -19,18 +19,21 @@
 
 ---
 
-## 2. The 5-Step Pedagogical Loop ("Concept + Socratic Challenge")
-Never dump a generic or cautious textbook essay. Match the exact depth, vividness, and structure of our gold-standard exemplar: [`01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md`](01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md).
+## 2. The 6-Step Pedagogical Loop ("Zero-Jargon CS Primer -> Staff+ Architecture -> Socratic Challenge")
+Never dump a generic or cautious textbook essay, and **NEVER assume prior Computer Science jargon**. Match the exact depth, beginner-friendly clarity, vividness, and structure of our gold-standard exemplar: [`01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md`](01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md).
 
-Every lesson (`1.2`, `2.1`, etc.) MUST follow this exact sequence:
+Every lesson (`0.1`, `1.0`, `1.1`, `2.0`, `2.1`, etc.) MUST follow this exact sequence:
 
+0. **Step 0 — The "From-Scratch" CS Primer (Zero Jargon Assumed)**:
+   - Assume the user is foggy on basic Computer Science terms (`kernel`, `syscall`, `pointer`, `page cache`, `fsync`, `socket`, `mutex`, `B-Tree`, `hash collision`, `p99`).
+   - Start **every single lesson** by explaining the foundational CS concepts from absolute scratch using a vivid everyday analogy (e.g., a carpenter's workbench, a restaurant kitchen, a post office) and a **Plain-English CS Vocabulary Table** before introducing any distributed systems complexity.
 1. **Step 1 — First-Principles Mental Model**:
    - Explain the physical/hardware constraint (CPU cycles, 64-byte cache lines, NVMe SSD random vs. sequential I/O, network RTT) that forced engineers to invent this concept.
    - **Connect to Real Production Systems Immediately**: Explain *how* PostgreSQL, Kafka, Redis, Envoy, or RocksDB exploits this physical property.
    - Include a detailed ` ```mermaid ` diagram and a structured Markdown comparison table.
 2. **Step 2 — Under the Hood (Internals & Equations)**:
-   - Dive into OS kernel vs. user space, packet headers, B+ Tree page splits, LSM-Tree SSTable compaction, or lock-free data structures.
-   - Include the governing mathematical intuition or formula (using KaTeX `$ ... $` or `$$ ... $$`) where relevant.
+   - Once Step 0 has demystified the vocabulary, dive into OS kernel vs. user space, packet headers, B+ Tree page splits, LSM-Tree SSTable compaction, or lock-free data structures.
+   - Include the governing mathematical intuition or formula (using KaTeX `$ ... $` or `$$ ... $$`) and explain every variable in plain English.
 3. **Step 3 — Contrast-Driven Python Lab (`labs/<script>.py`)**:
    - Write a self-contained, runnable Python script in the current level's `labs/` folder (see [`01-OS-And-Networking-Foundations/labs/latency_benchmark.py`](01-OS-And-Networking-Foundations/labs/latency_benchmark.py) as the exemplar).
    - **CRITICAL LAB RULE**: Always benchmark or simulate **at least two contrasting approaches side-by-side** (e.g., *Buffered Page Cache vs. `fsync`*, *Blocking Threads vs. Non-Blocking Event Loop*, *Naive Cache vs. Singleflight*) and print a `rich` table showing the **Relative Penalty / Speedup Multiplier (`307x slower`)** plus a `[bold yellow]Key Architect Insight[/bold yellow]` summary at the bottom.

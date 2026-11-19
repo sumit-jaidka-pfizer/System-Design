@@ -1,9 +1,9 @@
 # System Design Mastery Progress Tracker
 
 ## Current Focus
-- **Current Level**: Level 1 — OS, Hardware & Networking Physics
-- **Active Topic**: `1.1 Hardware & Latency Numbers Every Architect Must Know`
-- **Status**: Workspace initialized & ready for Lesson 1.1
+- **Current Level**: Level 0 (`0.1`–`0.5` CS Foundations From Scratch) & Level 1 (`1.0`–`1.1` OS, Hardware & Networking Physics)
+- **Active Topic**: `0.1 How a Computer Actually Runs Code` OR `1.1 Hardware & Latency Numbers` (now includes Section 0 Zero-Jargon CS Primer)
+- **Status**: Added `Level 0` (`0.1`–`0.5`), per-level `X.0` CS Primers (`1.0`–`7.0`), and `Section 0: Zero-Jargon CS Primer` to all lesson templates.
 
 ---
 

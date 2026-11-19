@@ -14,7 +14,8 @@
 
 ```mermaid
 flowchart TD
-    L1[Level 1: OS, Hardware & Networking Physics] --> C1([Capstone v1: Single-Node 10k RPS Server])
+    L0[Level 0: CS Foundations From Absolute Scratch] --> L1[Level 1: OS, Hardware & Networking Physics]
+    L1 --> C1([Capstone v1: Single-Node 10k RPS Server])
     C1 --> L2[Level 2: Storage Engines, OLTP & OLAP Internals]
     L2 --> C2([Capstone v2: Sharded, Replicated & Analytical Data Layer])
     C2 --> L3[Level 3: Distributed Building Blocks & Microservices]
@@ -29,11 +30,29 @@ flowchart TD
 
 ---
 
+## Level 0: Computer Science Foundations From Scratch (`00-CS-Foundations-From-Scratch/`)
+*Zero jargon assumed. If terms like "memory address", "pointer", "hash table", "binary tree", "kernel", or "socket" feel foggy, start here first.*
+
+- [ ] **0.1 How a Computer Actually Runs Code (Bits, Bytes, CPU, RAM & Disk)**: What physically happens when you write `x = 42`? Memory addresses (house numbers), CPU registers (your hands), RAM (your workbench), and SSD (the warehouse).
+  - *Python Lab*: `0.1_memory_and_bytes.py` (Inspect raw bits, bytes, memory addresses with `id()`, and see contiguous arrays vs. scattered objects).
+- [ ] **0.2 What an Operating System Actually Does (Kernel, Processes, Threads & Syscalls)**: Why your Python script isn't allowed to touch the SSD or network card directly; the Restaurant Kitchen analogy for Processes vs. Threads vs. Event Loops.
+  - *Python Lab*: `0.2_processes_vs_threads.py` (Watch the OS create separate memory spaces for processes vs. shared memory for threads).
+- [ ] **0.3 The 4 Data Structures That Run the World (Arrays, Linked Lists, Hash Tables & Trees)**: Big-O notation in plain English ($O(1), O(\log N), O(N)$); how a Hash Function turns `"user_123"` into an instant array slot; how a Tree cuts 1,000,000 items into 20 steps.
+  - *Python Lab*: `0.3_data_structures_from_scratch.py` (Build a miniature Hash Table and Binary Search Tree from scratch and race them against a plain list scan).
+- [ ] **0.4 How Two Programs Talk Over a Wire (IP Addresses, Ports, Packets & Sockets)**: The Postal System analogy—IP address (building address), Port number (apartment number), Packet (envelope with max size), and Socket (the mailbox door).
+  - *Python Lab*: `0.4_first_socket_chat.py` (Send raw bytes between two functions using a real loopback socket).
+- [ ] **0.5 The Math of System Performance (Latency vs. Throughput, Averages vs. Percentiles $p50/p95/p99$)**: Why "average latency" lies when 1 out of 20 customers waits 10 seconds; what Throughput (highway lanes) vs. Latency (speed limit) really means.
+  - *Python Lab*: `0.5_percentiles_vs_averages.py` (Simulate a coffee shop queue and see why Average looks fine while $p99$ is a disaster).
+
+---
+
 ## Level 1: OS, Hardware & Networking Physics (`01-OS-And-Networking-Foundations/`)
 *Before designing for 100M users, you must understand what happens inside a single machine and across a single wire.*
 
+- [ ] **1.0 CS Primer for Level 1 (From Scratch)**: CPU Clock Cycles, Cache Lines (why grabbing 1 item grabs its neighbors), Virtual Memory, the OS Page Cache (the OS's secret notepad), and Blocking vs. Non-Blocking I/O.
+  - *Python Lab*: `1.0_cache_and_io_primer.py` (Visualize sequential vs. random memory access and blocking vs. non-blocking waits).
 - [ ] **1.1 Hardware & Latency Numbers Every Architect Must Know**: CPU caches (L1/L2/L3), RAM vs. NVMe SSD vs. Network RTT, and Back-of-the-Envelope math.
-  - *Python Lab*: `latency_benchmark.py` (Measure memory vs. disk fsync vs. localhost socket vs. hash compute in Python).
+  - *Python Lab*: `latency_benchmark.py` (Measure memory vs. OS Page Cache vs. disk `fsync` vs. localhost socket vs. hash compute in Python).
 - [ ] **1.2 OS Internals for Backend Scale**: Processes vs. Threads vs. Coroutines (`asyncio`), Kernel vs. User Space, Context Switching, Virtual Memory, Page Cache, and `fsync`.
   - *Python Lab*: `c10k_concurrency_lab.py` (Compare Thread-per-connection vs. Non-blocking Event Loop / `selectors` under 1,000 concurrent connections).
 - [ ] **1.3 Networking From the Wire Up**: OSI/TCP-IP Stack, TCP 3-Way Handshake, Congestion Control, Head-of-Line Blocking, UDP, and TLS 1.3 handshake overhead.
@@ -48,6 +67,8 @@ flowchart TD
 ## Level 2: Data & Storage Engine Internals (`02-Storage-Engines-And-Databases/`)
 *Databases are not black boxes. At scale, choosing the wrong storage engine will destroy your write throughput or read latency.*
 
+- [ ] **2.0 CS Primer for Level 2 (From Scratch)**: How files live on disk (blocks/pages), Binary Search Trees vs. B-Trees (why disk trees are fat and short), Append-Only Logs vs. In-Place Updates, and Locks/Mutexes.
+  - *Python Lab*: `2.0_files_indexes_and_locks.py` (Build a simple file index from scratch and see why updating the middle of a file is slow).
 - [ ] **2.1 How Databases Store Data on Disk**: Write-Ahead Log (WAL), Pages, B+ Trees (PostgreSQL/MySQL InnoDB) vs. LSM Trees + SSTables + Bloom Filters (RocksDB/Cassandra).
   - *Python Lab*: `mini_lsm_engine.py` (Build a working Log-Structured Merge-tree KV store with WAL, MemTable, and Bloom Filter in <150 lines of Python).
 - [ ] **2.2 Relational Internals & ACID**: Isolation Levels (Read Committed, Repeatable Read, Serializable), MVCC (Multi-Version Concurrency Control), Write Skew, Phantom Reads, and Indexing (Composite, Covering, B-Tree).
@@ -65,6 +86,8 @@ flowchart TD
 ## Level 3: Core Distributed Building Blocks (`03-Distributed-Building-Blocks/`)
 *The Lego bricks of every large-scale architecture.*
 
+- [ ] **3.0 CS Primer for Level 3 (From Scratch)**: Proxies (middlemen), Hash Modulo (`hash(key) % N`) and why it breaks when `N` changes, Queues (FIFO lines), and Pub/Sub (radio broadcast vs. direct phone call).
+  - *Python Lab*: `3.0_modulo_vs_queues_primer.py` (See why `hash(key) % N` remaps 80%+ of keys when 1 server is added).
 - [ ] **3.1 Load Balancing at Scale**: L4 (Transport/TCP) vs. L7 (Application/HTTP) Load Balancers, Algorithms (Round Robin, Least Connections, Power of Two Choices, Consistent Hash), Maglev, DSR (Direct Server Return).
   - *Python Lab*: `l7_reverse_proxy.py` (Build an async L7 load balancer with health checks and Power-of-Two-Choices routing).
 - [ ] **3.2 Caching Architecture & Failure Modes**: Cache-Aside, Read-Through, Write-Through, Write-Behind; Eviction (LRU, LFU, Window-TinyLFU); Cache Stampede (Thundering Herd), Penetration (Bloom Filter), Avalanche, and Hot Key mitigation.
@@ -83,6 +106,8 @@ flowchart TD
 ## Level 4: Distributed Systems Theory & Consensus (`04-Distributed-Systems-Internals/`)
 *Where Senior Engineers become Staff+ Architects—understanding what breaks when networks partition and clocks lie.*
 
+- [ ] **4.0 CS Primer for Level 4 (From Scratch)**: State Machines (deterministic inputs $\rightarrow$ outputs), why two computers never have the exact same clock time, Quorums (majority voting), and Idempotency ($f(f(x)) = f(x)$).
+  - *Python Lab*: `4.0_state_machines_and_idempotency.py` (See how duplicate network retries corrupt a bank balance and how an Idempotency Key fixes it in 10 lines of code).
 - [ ] **4.1 The Eight Fallacies of Distributed Computing & Partial Failures**: Network partitions, asymmetric links, grey failures, GC pauses, and why timeouts are never simple.
 - [ ] **4.2 Time, Clocks & Ordering**: Physical Clocks (NTP skew), Monotonic vs. Wall-Clock Time, Lamport Timestamps, Vector Clocks, and Google TrueTime (Spanner).
   - *Python Lab*: `vector_clocks_causality.py` (Detect causal ordering vs. concurrent conflicts across 3 nodes using Vector Clocks).
@@ -98,6 +123,8 @@ flowchart TD
 ## Level 5: Production Architecture, Stream Processing, SRE & FinOps (`05-Production-And-SRE/`)
 *What separates textbook diagrams from systems that survive Black Friday and don't bankrupt the company.*
 
+- [ ] **5.0 CS Primer for Level 5 (From Scratch)**: Probability of Failure (why 99.9% uptime across 50 microservices equals 95% uptime), Exponential growth (retry storms), and Cryptography basics (Symmetric AES vs. Asymmetric Public/Private Keys vs. Hashing).
+  - *Python Lab*: `5.0_crypto_and_reliability_math.py` (Benchmark hashing vs. AES encryption vs. RSA signing and simulate compound microservice failure probabilities).
 - [ ] **5.1 Resiliency & Metastable Failures**: Circuit Breakers, Exponential Backoff with Full Jitter, Bulkheads, Adaptive Load Shedding, Graceful Degradation, and Retry Storms.
   - *Python Lab*: `circuit_breaker_jitter.py` (Simulate a cascading retry storm and fix it with an adaptive Circuit Breaker + Full Jitter).
 - [ ] **5.2 Real-Time Stream Processing Architecture**: Flink/Kafka Streams internals—Event Time vs. Processing Time, Watermarks (handling late-arriving data), Tumbling/Sliding/Session Windows, and Exactly-Once Processing.
@@ -124,6 +151,9 @@ flowchart TD
 
 ## Level 7: Modern AI-Native System Design (2026+) (`07-AI-Native-System-Design/`)
 *The new frontier of Staff+ System Design interviews and production engineering.*
+
+- [ ] **7.0 CS & Math Primer for AI Systems (From Scratch)**: What is a Token, what is a Vector/Embedding (turning meaning into a list of numbers / GPS coordinates in meaning-space), Dot Product / Cosine Similarity, and Matrix Multiplication on GPUs vs. CPUs.
+  - *Python Lab*: `7.0_vectors_and_embeddings_from_scratch.py` (Plot word vectors in 3D/ND using `numpy` and find similar meanings with 5 lines of math).
 
 - [ ] **7.1 LLM Inference Serving at Scale**: Prefill (compute-bound) vs. Decode (memory-bandwidth bound), KV-Cache architecture, PagedAttention (vLLM), Continuous Batching, Speculative Decoding, and Prefix Caching.
 - [ ] **7.2 Vector Databases & Approximate Nearest Neighbor (ANN) Internals**: Flat Index vs. IVF (Inverted File) vs. **HNSW (Hierarchical Navigable Small World)** graphs, Product Quantization (PQ), and Hybrid Search (BM25 + Dense Embeddings + Reciprocal Rank Fusion).

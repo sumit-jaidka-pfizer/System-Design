@@ -6,6 +6,19 @@
 
 ---
 
+## 0. The "From-Scratch" Computer Science Primer (Zero Jargon)
+*Before we touch production architecture, let's define every CS building block in plain English using an everyday analogy.*
+
+- **The Everyday Analogy**: (e.g., A chef in a kitchen, a library card catalog, a post office)
+- **Plain-English Vocabulary Table**:
+
+| Computer Science Term | What It Means in Plain English | Real-World Analogy |
+| :--- | :--- | :--- |
+| **[Term 1]** | | |
+| **[Term 2]** | | |
+
+---
+
 ## 1. First-Principles Mental Model (The "Why")
 - **Physical / Hardware Bottleneck**: (CPU, RAM, Disk Seek, Network RTT, or Concurrency limit)
 - **Core Intuition**:
