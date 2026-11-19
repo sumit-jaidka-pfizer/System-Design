@@ -3,7 +3,8 @@ name: learn-topic
 description: "Learn a System Design topic using First Principles, Internals, Python Lab, and a Socratic Challenge."
 disable-model-invocation: true
 ---
-Look up the requested topic number or name in [ROADMAP.md](../../ROADMAP.md), [PROGRESS.md](../../PROGRESS.md), and [AGENTS.md](../../AGENTS.md). Match the exact Staff+ depth and vividness of our gold-standard exemplar ([01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md](../../01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md)):
+Look up the requested topic number or name in [ROADMAP.md](../../ROADMAP.md), [PROGRESS.md](../../PROGRESS.md), and [AGENTS.md](../../AGENTS.md). Match the exact beginner-to-Staff+ clarity, depth, and vividness of our gold-standard exemplar ([01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md](../../01-OS-And-Networking-Foundations/1.1-hardware-and-latency-numbers.md)):
+0. **Zero-Jargon CS Primer (From Scratch)**: Never assume CS jargon! First explain every underlying Computer Science term in plain English using a concrete everyday analogy and a CS Vocabulary Table.
 1. **First-Principles Mental Model**: Why it exists, what hardware/network bottleneck it solves, how real systems (Postgres/Kafka/Redis/Envoy) use it, a detailed ` ```mermaid ` diagram, and a comparison matrix. Zero dry disclaimers!
 2. **Under the Hood (Internals)**: Concrete OS, network, or storage engine mechanics + governing equations in KaTeX (`$$`).
 3. **Contrast-Driven Python Lab (No Docker)**: Create a runnable Python script in the module's `labs/` folder that compares at least two contrasting designs side-by-side (e.g., naive vs. optimized) using `rich` tables with relative speedup/penalty multipliers, and run it with `.venv\Scripts\python.exe`.
